@@ -6,10 +6,9 @@
   --color-sage: #aab6a4;
   --color-forest: #274936;
   --color-line: rgba(39, 73, 54, 0.18);
-  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia,
-    "Noto Serif KR", serif;
-  --font-sans: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui,
-    sans-serif;
+  --font-serif: "Maru Buri", "Noto Serif KR", serif;
+  --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo",
+    "Noto Sans KR", system-ui, sans-serif;
 
   font-family: var(--font-sans);
   color: var(--color-ink);
