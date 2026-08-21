@@ -903,6 +903,12 @@ textarea {
   font-size: 0.65rem;
 }
 
+.account-list__item button:not(:disabled) {
+  color: var(--color-forest);
+  background: rgba(248, 246, 239, 0.72);
+  cursor: pointer;
+}
+
 @media (min-width: 520px) {
   .invitation-canvas {
     min-height: calc(100svh - 48px);

@@ -5,8 +5,11 @@ type AccountGroup = (typeof accounts)[keyof typeof accounts]
 function AccountList({ items }: { items: AccountGroup }) {
   return (
     <div className="account-list">
-      {items.map((account) => (
-        <div className="account-list__item" key={`${account.relation}-${account.name}`}>
+      {items.map((account) => {
+        const isPlaceholder = account.number.includes('추후 입력')
+
+        return (
+          <div className="account-list__item" key={`${account.relation}-${account.name}`}>
           <p>
             <span>{account.relation}</span>
             <strong>{account.name}</strong>
@@ -15,11 +18,18 @@ function AccountList({ items }: { items: AccountGroup }) {
             <span>{account.bank}</span>
             <span>{account.number}</span>
           </p>
-          <button type="button" disabled title="계좌번호 입력 후 사용할 수 있습니다">
+          <button
+            type="button"
+            disabled={isPlaceholder}
+            title={isPlaceholder ? '계좌번호 입력 후 사용할 수 있습니다' : `${account.name} 계좌번호 복사`}
+            aria-label={`${account.name} 계좌번호 복사`}
+            onClick={() => navigator.clipboard.writeText(account.number.replaceAll('-', ''))}
+          >
             복사
           </button>
-        </div>
-      ))}
+          </div>
+        )
+      })}
     </div>
   )
 }

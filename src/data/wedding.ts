@@ -73,9 +73,9 @@ export const galleryPhotos = [
 
 export const accounts = {
   groom: [
-    { relation: '신랑', name: '손태영', bank: '은행 추후 입력', number: '계좌번호 추후 입력' },
-    { relation: '아버지', name: '손철호', bank: '은행 추후 입력', number: '계좌번호 추후 입력' },
-    { relation: '어머니', name: '임성효', bank: '은행 추후 입력', number: '계좌번호 추후 입력' },
+    { relation: '신랑', name: '손태영', bank: '우리은행', number: '1002-454-215893' },
+    { relation: '아버지', name: '손철호', bank: '국민은행', number: '832-24-0139-441' },
+    { relation: '어머니', name: '임성효', bank: '국민은행', number: '832-24-0139-441' },
   ],
   bride: [
     { relation: '신부', name: '조현아', bank: '은행 추후 입력', number: '계좌번호 추후 입력' },
