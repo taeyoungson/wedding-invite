@@ -109,6 +109,6 @@ export const accounts = {
   bride: [
     { relation: '신부', name: '조현아', bank: '신한은행', number: '110-497-717473' },
     { relation: '아버지', name: '조양호', bank: '우리은행', number: '178-120674-02-001' },
-    { relation: '어머니', name: '윤필란', bank: '농협', number: '827-02-210318' },
+    { relation: '어머니', name: '윤필란', bank: '농협은행', number: '827-02-210318' },
   ],
 } as const
