@@ -1,4 +1,3 @@
-import coverMain from '../assets/photos/cover-main.jpeg'
 import gallery01 from '../assets/photos/g1.jpg'
 import gallery02 from '../assets/photos/g2.jpg'
 import gallery03 from '../assets/photos/g3.jpg'
@@ -9,6 +8,21 @@ import gallery07 from '../assets/photos/g7.jpg'
 import gallery08 from '../assets/photos/g8.jpg'
 import gallery09 from '../assets/photos/g9.jpg'
 import gallery10 from '../assets/photos/g10.jpg'
+import gallery11 from '../assets/photos/g11.jpg'
+import gallery12 from '../assets/photos/g12.jpg'
+import gallery13 from '../assets/photos/g13.jpg'
+import gallery14 from '../assets/photos/g14.jpg'
+import gallery15 from '../assets/photos/g15.jpg'
+import gallery16 from '../assets/photos/g16.jpg'
+import gallery17 from '../assets/photos/g17.jpg'
+import gallery18 from '../assets/photos/g18.jpg'
+import gallery19 from '../assets/photos/g19.jpg'
+import gallery20 from '../assets/photos/g20.jpg'
+import gallery21 from '../assets/photos/g21.jpg'
+import gallery22 from '../assets/photos/g22.jpg'
+import gallery23 from '../assets/photos/g23.jpg'
+import gallery24 from '../assets/photos/g24.jpg'
+import gallery25 from '../assets/photos/g25.jpg'
 
 export const wedding = {
   groom: '손태영',
@@ -44,7 +58,7 @@ export const wedding = {
     ],
     naverMapUrl: 'https://naver.me/FZ2x56vx',
   },
-  coverImage: coverMain,
+  coverImage: gallery01,
 } as const
 
 export const invitationMessage = [
@@ -66,6 +80,21 @@ export const galleryPhotos = [
   gallery08,
   gallery09,
   gallery10,
+  gallery11,
+  gallery12,
+  gallery13,
+  gallery14,
+  gallery15,
+  gallery16,
+  gallery17,
+  gallery18,
+  gallery19,
+  gallery20,
+  gallery21,
+  gallery22,
+  gallery23,
+  gallery24,
+  gallery25,
 ].map((src, index) => ({
   src,
   alt: `태영과 현아의 웨딩 사진 ${index + 1}`,
@@ -78,8 +107,8 @@ export const accounts = {
     { relation: '어머니', name: '임성효', bank: '국민은행', number: '832-24-0139-441' },
   ],
   bride: [
-    { relation: '신부', name: '조현아', bank: '은행 추후 입력', number: '계좌번호 추후 입력' },
-    { relation: '아버지', name: '조양호', bank: '은행 추후 입력', number: '계좌번호 추후 입력' },
-    { relation: '어머니', name: '윤필란', bank: '은행 추후 입력', number: '계좌번호 추후 입력' },
+    { relation: '신부', name: '조현아', bank: '신한은행', number: '110-497-717473' },
+    { relation: '아버지', name: '조양호', bank: '우리은행', number: '178-120674-02-001' },
+    { relation: '어머니', name: '윤필란', bank: '농협', number: '827-02-210318' },
   ],
 } as const

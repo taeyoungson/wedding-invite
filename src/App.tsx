@@ -22,7 +22,7 @@ function App() {
           <img
             className="cover__photo"
             src={wedding.coverImage}
-            alt="추후 신랑 신부의 대표 사진으로 교체할 자리"
+            alt="신랑 손태영과 신부 조현아의 웨딩 사진"
           />
         </figure>
 
