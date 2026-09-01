@@ -4,7 +4,11 @@ import { galleryPhotos } from '../data/wedding'
 
 export function Gallery() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
-  const touchStartX = useRef<number | null>(null)
+  const touchStart = useRef<{ x: number; y: number } | null>(null)
+  const figureRef = useRef<HTMLElement>(null)
+  const [dragX, setDragX] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const [isSettling, setIsSettling] = useState(false)
 
   const close = () => setSelectedIndex(null)
   const showPrevious = () =>
@@ -17,21 +21,50 @@ export function Gallery() {
     )
 
   const handleTouchStart = (event: React.TouchEvent) => {
-    touchStartX.current = event.changedTouches[0]?.clientX ?? null
+    if (isSettling) return
+    const touch = event.changedTouches[0]
+    if (!touch) return
+    touchStart.current = { x: touch.clientX, y: touch.clientY }
+    setIsDragging(false)
   }
 
-  const handleTouchEnd = (event: React.TouchEvent) => {
-    if (touchStartX.current === null) return
+  const handleTouchMove = (event: React.TouchEvent) => {
+    if (!touchStart.current || isSettling) return
+    const touch = event.changedTouches[0]
+    if (!touch) return
 
-    const endX = event.changedTouches[0]?.clientX
-    if (endX === undefined) return
+    const deltaX = touch.clientX - touchStart.current.x
+    const deltaY = touch.clientY - touchStart.current.y
+    if (!isDragging && Math.abs(deltaY) >= Math.abs(deltaX)) return
 
-    const distance = endX - touchStartX.current
-    touchStartX.current = null
+    setIsDragging(true)
+    setDragX(deltaX)
+  }
 
-    if (Math.abs(distance) < 45) return
-    if (distance > 0) showPrevious()
-    else showNext()
+  const settleSwipe = (direction: 'previous' | 'next' | null) => {
+    const width = figureRef.current?.clientWidth ?? window.innerWidth
+    setIsSettling(true)
+    setDragX(direction === 'previous' ? width : direction === 'next' ? -width : 0)
+
+    window.setTimeout(() => {
+      if (direction === 'previous') showPrevious()
+      if (direction === 'next') showNext()
+      setIsSettling(false)
+      setIsDragging(false)
+      setDragX(0)
+    }, 240)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart.current) return
+    touchStart.current = null
+
+    if (!isDragging || Math.abs(dragX) < 45) {
+      settleSwipe(null)
+      return
+    }
+
+    settleSwipe(dragX > 0 ? 'previous' : 'next')
   }
 
   useEffect(() => {
@@ -91,15 +124,35 @@ export function Gallery() {
               ‹
             </button>
             <figure
+              ref={figureRef}
               className="gallery-modal__figure"
               onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
-              <img
-                src={galleryPhotos[selectedIndex].src}
-                alt={galleryPhotos[selectedIndex].alt}
-                draggable={false}
-              />
+              <div className="gallery-modal__viewport">
+                <div
+                  className={`gallery-modal__track${isSettling ? ' gallery-modal__track--settling' : ''}`}
+                  style={{ transform: `translate3d(calc(-100% + ${dragX}px), 0, 0)` }}
+                >
+                  {[-1, 0, 1].map((offset) => {
+                    const photoIndex =
+                      (selectedIndex + offset + galleryPhotos.length) % galleryPhotos.length
+                    const photo = galleryPhotos[photoIndex]
+
+                    return (
+                      <div className="gallery-modal__slide" key={`${photo.src}-${offset}`}>
+                        <img
+                          src={photo.src}
+                          alt={offset === 0 ? photo.alt : ''}
+                          aria-hidden={offset !== 0}
+                          draggable={false}
+                        />
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
               <figcaption>
                 {selectedIndex + 1} / {galleryPhotos.length}
               </figcaption>
