@@ -577,14 +577,6 @@ textarea {
   -webkit-user-drag: none;
 }
 
-.gallery-modal__figure figcaption {
-  margin-top: 14px;
-  color: rgba(248, 246, 239, 0.72);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-align: center;
-}
-
 @media (max-width: 519px) {
   .gallery-modal {
     padding: 54px 0 24px;
@@ -599,10 +591,6 @@ textarea {
     height: auto;
     max-height: calc(100svh - 96px);
     object-fit: contain;
-  }
-
-  .gallery-modal__figure figcaption {
-    padding-inline: 16px;
   }
 
   .gallery-modal__arrow {

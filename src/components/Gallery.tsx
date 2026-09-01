@@ -159,9 +159,6 @@ export function Gallery() {
                   })}
                 </div>
               </div>
-              <figcaption>
-                {selectedIndex + 1} / {galleryPhotos.length}
-              </figcaption>
             </figure>
             <button
               className="gallery-modal__arrow gallery-modal__arrow--next"
