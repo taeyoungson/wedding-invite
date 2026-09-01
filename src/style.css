@@ -438,7 +438,7 @@ textarea {
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   overscroll-behavior-inline: contain;
-  touch-action: pan-x;
+  touch-action: pan-x pan-y;
 }
 
 .gallery-grid::-webkit-scrollbar {
@@ -550,7 +550,7 @@ textarea {
   width: 100%;
   max-height: calc(100svh - 130px);
   object-fit: contain;
-  touch-action: none;
+  touch-action: pan-y;
   user-select: none;
   -webkit-user-drag: none;
 }

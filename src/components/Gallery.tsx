@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { galleryPhotos } from '../data/wedding'
 
 export function Gallery() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const touchStartX = useRef<number | null>(null)
 
   const close = () => setSelectedIndex(null)
   const showPrevious = () =>
@@ -14,6 +15,24 @@ export function Gallery() {
     setSelectedIndex((current) =>
       current === null ? null : (current + 1) % galleryPhotos.length,
     )
+
+  const handleTouchStart = (event: React.TouchEvent) => {
+    touchStartX.current = event.changedTouches[0]?.clientX ?? null
+  }
+
+  const handleTouchEnd = (event: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+
+    const endX = event.changedTouches[0]?.clientX
+    if (endX === undefined) return
+
+    const distance = endX - touchStartX.current
+    touchStartX.current = null
+
+    if (Math.abs(distance) < 45) return
+    if (distance > 0) showPrevious()
+    else showNext()
+  }
 
   useEffect(() => {
     if (selectedIndex === null) return
@@ -71,7 +90,11 @@ export function Gallery() {
             >
               ‹
             </button>
-            <figure className="gallery-modal__figure">
+            <figure
+              className="gallery-modal__figure"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <img
                 src={galleryPhotos[selectedIndex].src}
                 alt={galleryPhotos[selectedIndex].alt}
