@@ -4,7 +4,7 @@ import { galleryPhotos } from '../data/wedding'
 
 export function Gallery() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
-  const touchStart = useRef<{ x: number; y: number } | null>(null)
+  const pointerStart = useRef<{ id: number; x: number; y: number } | null>(null)
   const figureRef = useRef<HTMLElement>(null)
   const [dragX, setDragX] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
@@ -20,21 +20,23 @@ export function Gallery() {
       current === null ? null : (current + 1) % galleryPhotos.length,
     )
 
-  const handleTouchStart = (event: React.TouchEvent) => {
-    if (isSettling) return
-    const touch = event.changedTouches[0]
-    if (!touch) return
-    touchStart.current = { x: touch.clientX, y: touch.clientY }
+  const handlePointerDown = (event: React.PointerEvent<HTMLElement>) => {
+    if (isSettling || !event.isPrimary) return
+    pointerStart.current = {
+      id: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+    }
+    event.currentTarget.setPointerCapture(event.pointerId)
     setIsDragging(false)
   }
 
-  const handleTouchMove = (event: React.TouchEvent) => {
-    if (!touchStart.current || isSettling) return
-    const touch = event.changedTouches[0]
-    if (!touch) return
+  const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
+    const start = pointerStart.current
+    if (!start || start.id !== event.pointerId || isSettling) return
 
-    const deltaX = touch.clientX - touchStart.current.x
-    const deltaY = touch.clientY - touchStart.current.y
+    const deltaX = event.clientX - start.x
+    const deltaY = event.clientY - start.y
     if (!isDragging && Math.abs(deltaY) >= Math.abs(deltaX)) return
 
     setIsDragging(true)
@@ -55,9 +57,12 @@ export function Gallery() {
     }, 240)
   }
 
-  const handleTouchEnd = () => {
-    if (!touchStart.current) return
-    touchStart.current = null
+  const handlePointerEnd = (event: React.PointerEvent<HTMLElement>) => {
+    if (pointerStart.current?.id !== event.pointerId) return
+    pointerStart.current = null
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+    }
 
     if (!isDragging || Math.abs(dragX) < 45) {
       settleSwipe(null)
@@ -126,9 +131,10 @@ export function Gallery() {
             <figure
               ref={figureRef}
               className="gallery-modal__figure"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerEnd}
+              onPointerCancel={handlePointerEnd}
             >
               <div className="gallery-modal__viewport">
                 <div
