@@ -75,6 +75,7 @@ export function Gallery() {
               <img
                 src={galleryPhotos[selectedIndex].src}
                 alt={galleryPhotos[selectedIndex].alt}
+                draggable={false}
               />
               <figcaption>
                 {selectedIndex + 1} / {galleryPhotos.length}

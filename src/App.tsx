@@ -4,10 +4,12 @@ import { Calendar } from './components/Calendar'
 import { Gallery } from './components/Gallery'
 import { Location } from './components/Location'
 import { Accounts } from './components/Accounts'
+import { BackgroundMusic } from './components/BackgroundMusic'
 
 function App() {
   return (
     <main className="invitation-canvas" aria-label="손태영과 조현아의 모바일 청첩장">
+      <BackgroundMusic />
       <section className="cover" aria-labelledby="cover-names">
         <header className="cover__header">
           <p className="cover__eyebrow">WEDDING INVITATION</p>
