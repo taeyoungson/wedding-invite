@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 const MUSIC_URL =
-  'https://cdn.pixabay.com/download/audio/2023/10/09/audio_44a25b4c0d.mp3?filename=ivan_luzan-the-wedding-piano-170726.mp3'
+  'https://cdn.pixabay.com/download/audio/2026/08/01/audio_c48fcf7267.mp3?filename=alex-morgan-wedding-garden-ceremony-glow-578500.mp3'
 
 export function BackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement>(null)
