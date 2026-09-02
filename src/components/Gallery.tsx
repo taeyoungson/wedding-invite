@@ -108,7 +108,6 @@ export function Gallery() {
             key={`${photo.alt}-${index}`}
           >
             <img src={photo.src} alt={photo.alt} loading="lazy" />
-            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
           </button>
         ))}
       </div>

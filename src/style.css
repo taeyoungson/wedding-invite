@@ -466,17 +466,6 @@ textarea {
   transition: transform 300ms ease;
 }
 
-.gallery-grid__item span {
-  position: absolute;
-  right: 9px;
-  bottom: 8px;
-  color: rgba(248, 246, 239, 0.88);
-  font-family: var(--font-serif);
-  font-size: 0.6rem;
-  letter-spacing: 0.08em;
-  text-shadow: 0 1px 5px rgba(20, 31, 24, 0.5);
-}
-
 .gallery-grid__item:focus-visible {
   outline: 2px solid var(--color-forest);
   outline-offset: 3px;
