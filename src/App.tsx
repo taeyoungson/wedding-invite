@@ -31,7 +31,6 @@ function App() {
         <div className="cover__content">
           <h1 id="cover-names">
             <span>{wedding.groom}</span>
-            <span className="cover__name-divider" aria-hidden="true">그리고</span>
             <span>{wedding.bride}</span>
           </h1>
           <div className="cover__line" aria-hidden="true" />
