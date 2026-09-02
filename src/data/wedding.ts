@@ -12,7 +12,6 @@ import gallery11 from '../assets/photos/g11.jpg'
 import gallery12 from '../assets/photos/g12.jpg'
 import gallery13 from '../assets/photos/g13.jpg'
 import gallery14 from '../assets/photos/g14.jpg'
-import gallery15 from '../assets/photos/g15.jpg'
 import gallery16 from '../assets/photos/g16.jpg'
 import gallery17 from '../assets/photos/g17.jpg'
 import gallery18 from '../assets/photos/g18.jpg'
@@ -84,7 +83,6 @@ export const galleryPhotos = [
   gallery12,
   gallery13,
   gallery14,
-  gallery15,
   gallery16,
   gallery17,
   gallery18,
