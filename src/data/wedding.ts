@@ -30,12 +30,12 @@ export const wedding = {
     groom: {
       father: '손철호',
       mother: '임성효',
-      relation: '장남',
+      relation: '아들',
     },
     bride: {
       father: '조양호',
       mother: '윤필란',
-      relation: '차녀',
+      relation: '딸',
     },
   },
   dateLabel: '2026년 10월 17일 토요일',
