@@ -56,6 +56,10 @@ export const wedding = {
       '공항버스: 세종대학교 6013',
     ],
     naverMapUrl: 'https://naver.me/FZ2x56vx',
+    kakaoMapUrl: 'https://kko.to/-yaFPf9Kaf',
+    tmapAndroidUrl: 'tmap://route?referrer=wedding-invite&goalname=%EA%B7%BC%ED%99%94%EC%9B%90&goalx=127.078143&goaly=37.547005',
+    tmapIosUrl: 'tmap://?rGoName=%EA%B7%BC%ED%99%94%EC%9B%90&rGoX=127.078143&rGoY=37.547005',
+    tmapWebUrl: 'https://www.tmapmobility.com/service/drive/navigation',
   },
   coverImage: gallery01,
 } as const

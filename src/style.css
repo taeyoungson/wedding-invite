@@ -777,21 +777,49 @@ textarea {
 }
 
 .location-section__actions {
-  display: grid;
   margin-top: 14px;
-  grid-template-columns: repeat(2, 1fr);
+}
+
+.map-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
-.location-section__actions button,
-.location-section__actions a {
-  padding: 13px 10px;
+.map-link {
+  display: flex;
+  min-width: 0;
+  min-height: 54px;
+  padding: 9px 7px;
   border: 1px solid var(--color-line);
-  color: var(--color-forest);
-  background: rgba(248, 246, 239, 0.64);
-  font-size: 0.72rem;
+  border-radius: 2px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ink);
+  background: rgba(248, 246, 239, 0.72);
   text-decoration: none;
-  cursor: pointer;
+  gap: 7px;
+}
+
+.map-link__icon {
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.map-link__name {
+  display: grid;
+  justify-items: start;
+  line-height: 1;
+}
+
+.map-link__name strong {
+  font-family: Arial, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .transport-info {
