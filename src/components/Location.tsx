@@ -94,8 +94,14 @@ export function Location() {
         <article>
           <h3>주차</h3>
           <p>{location.parking}</p>
+          <p>{location.parkingNote}</p>
         </article>
       </div>
+
+      <p className="location-section__notice">
+        식장의 사정으로 화환은 받지 않습니다.<br />
+        좋은 마음만 감사히 받겠습니다.
+      </p>
     </section>
   )
 }
